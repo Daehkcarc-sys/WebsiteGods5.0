@@ -516,11 +516,12 @@ class App {
     },
   ) {
     this.container = container;
-    this.scrollSpeed = scrollSpeed;
+    const isMobile = window.innerWidth < 768;
+    this.scrollSpeed = isMobile ? scrollSpeed * 0.6 : scrollSpeed;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
     this.onCheckDebounce = debounce(this.onCheck.bind(this), 200);
     this.autoScroll = autoScroll;
-    this.autoScrollSpeed = autoScrollSpeed;
+    this.autoScrollSpeed = isMobile ? autoScrollSpeed * 0.5 : autoScrollSpeed;
 
     autoBind(this);
 
@@ -535,10 +536,11 @@ class App {
   }
 
   createRenderer() {
+    const isMobile = window.innerWidth < 768;
     this.renderer = new Renderer({
       alpha: true,
       antialias: true,
-      dpr: Math.min(window.devicePixelRatio || 1, 2),
+      dpr: Math.min(window.devicePixelRatio || 1, isMobile ? 1 : 2),
     });
     this.gl = this.renderer.gl;
     this.gl.clearColor(0, 0, 0, 0);
@@ -556,9 +558,10 @@ class App {
   }
 
   createGeometry() {
+    const isMobile = window.innerWidth < 768;
     this.planeGeometry = new Plane(this.gl, {
-      heightSegments: 50,
-      widthSegments: 100,
+      heightSegments: isMobile ? 20 : 50,
+      widthSegments: isMobile ? 40 : 100,
     });
   }
 

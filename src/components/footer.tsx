@@ -53,6 +53,7 @@ const socials = [
 
 // Quick links
 const quickLinks = [
+  { name: "Hackathon Register", href: "/hackathon-register" },
   { name: "Bootcamp Register", href: "/bootcamp-register" },
   { name: "Contact", href: "/contact" },
   { name: "FAQ", href: "/faq" },

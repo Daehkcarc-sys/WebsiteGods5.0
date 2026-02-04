@@ -1,7 +1,7 @@
 import './App.css'
 import Homepage from './components/pages/homepage.tsx';
 import Layout from './components/pages/layout.tsx'
-import Register from './components/pages/register.tsx';
+import EventRegister from './components/pages/event-register.tsx';
 import BootcampRegister from './components/pages/bootcamp-register.tsx';
 import { BrowserRouter, Routes, Route } from "react-router";
 import gsap from "gsap";
@@ -18,7 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Homepage />} />
-            <Route path="register" element={<Register />} />
+            <Route path="register" element={<EventRegister />} />
+            <Route path="hackathon-register" element={<EventRegister />} />
             <Route path="bootcamp-register" element={<BootcampRegister />} />
           </Route>
         </Routes>

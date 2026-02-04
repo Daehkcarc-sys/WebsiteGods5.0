@@ -98,7 +98,8 @@ function createTextTexture(
   
   // Responsive font size based on screen width
   const screenWidth = window.innerWidth;
-  const scaledFontSize = screenWidth < 640 ? 48 : screenWidth < 1024 ? 60 : 72;
+  const scaledFontSize =
+    screenWidth < 480 ? 36 : screenWidth < 640 ? 44 : screenWidth < 1024 ? 56 : 72;
   // Stylish font - using Georgia for elegance, with italic for flair
   const scaledFont = `italic 500 ${scaledFontSize}px "Georgia", "Times New Roman", serif`;
   
@@ -446,7 +447,8 @@ class Media {
         ).uViewportSizes.value = [this.viewport.width, this.viewport.height];
       }
     }
-    this.scale = this.screen.height / 1500;
+    const scaleBase = Math.min(this.screen.width / 1200, this.screen.height / 1500);
+    this.scale = Math.max(0.25, Math.min(scaleBase, 0.7));
     this.plane.scale.y =
       (this.viewport.height * (900 * this.scale)) / this.screen.height;
     this.plane.scale.x =
@@ -484,6 +486,7 @@ class App {
   boundOnTouchDown!: (e: MouseEvent | TouchEvent) => void;
   boundOnTouchMove!: (e: MouseEvent | TouchEvent) => void;
   boundOnTouchUp!: () => void;
+  resizeObserver?: ResizeObserver;
   autoScroll: boolean = false;
   autoScrollSpeed: number = 0.5;
   isHovering: boolean = false;
@@ -608,6 +611,9 @@ class App {
 
   onTouchMove(e: MouseEvent | TouchEvent) {
     if (!this.isDown) return;
+    if ("touches" in e) {
+      e.preventDefault();
+    }
     const x = "touches" in e ? e.touches[0].clientX : e.clientX;
     const distance = (this.start - x) * (this.scrollSpeed * 0.025);
     this.scroll.target = ((this.scroll as { position?: number }).position || 0) + distance;
@@ -693,13 +699,18 @@ class App {
     this.container.addEventListener("mousedown", this.boundOnTouchDown);
     window.addEventListener("mousemove", this.boundOnTouchMove);
     window.addEventListener("mouseup", this.boundOnTouchUp);
-    this.container.addEventListener("touchstart", this.boundOnTouchDown);
-    window.addEventListener("touchmove", this.boundOnTouchMove);
+    this.container.addEventListener("touchstart", this.boundOnTouchDown, { passive: false });
+    window.addEventListener("touchmove", this.boundOnTouchMove, { passive: false });
     window.addEventListener("touchend", this.boundOnTouchUp);
     
     // Hover listeners for auto-scroll pause
     this.container.addEventListener("mouseenter", this.onMouseEnter.bind(this));
     this.container.addEventListener("mouseleave", this.onMouseLeave.bind(this));
+
+    if (typeof ResizeObserver !== "undefined") {
+      this.resizeObserver = new ResizeObserver(() => this.onResize());
+      this.resizeObserver.observe(this.container);
+    }
   }
 
   destroy() {
@@ -714,6 +725,10 @@ class App {
     window.removeEventListener("touchend", this.boundOnTouchUp);
     this.container.removeEventListener("mouseenter", this.onMouseEnter.bind(this));
     this.container.removeEventListener("mouseleave", this.onMouseLeave.bind(this));
+
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+    }
 
     if (this.renderer && this.renderer.gl && this.renderer.gl.canvas.parentNode) {
       this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas);

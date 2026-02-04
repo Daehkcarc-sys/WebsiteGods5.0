@@ -225,6 +225,7 @@ function Ambassadors() {
           scrollEase={0.05}
           autoScroll={true}
           autoScrollSpeed={0.07}
+          className="text-white"
         />
       </div>
     </section>

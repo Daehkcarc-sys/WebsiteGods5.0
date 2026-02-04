@@ -20,6 +20,8 @@ const MAX_CV_SIZE = MAX_CV_SIZE_MB * 1024 * 1024;
 
 const attendanceOptions = ["In-Person", "Online"];
 
+const REGISTRATION_UNLOCK_AT = new Date("2026-02-05T20:00:00+01:00");
+
 const formSchema = z
   .object({
     teamName: z.string().min(2, "Team name is required"),
@@ -94,6 +96,7 @@ type RegisterFormValues = z.infer<typeof formSchema>;
 
 function EventRegister() {
   const mainRef = useRef<HTMLDivElement>(null);
+  const isLocked = Date.now() < REGISTRATION_UNLOCK_AT.getTime();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
@@ -254,6 +257,32 @@ function EventRegister() {
   };
 
   return (
+    isLocked ? (
+      <main ref={mainRef} className="min-h-screen bg-background pt-28 sm:pt-32 lg:pt-36 pb-16 px-4 sm:px-6 mb-5">
+        <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+          <div className="absolute top-1/4 -left-32 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 -right-32 w-64 sm:w-96 h-64 sm:h-96 bg-white/5 rounded-full blur-3xl" />
+        </div>
+        <section className="max-w-4xl mx-auto relative z-10">
+          <header className="text-center mb-8 sm:mb-12">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold">
+                <span className="text-primary">GODS</span>{" "}
+                <span className="text-foreground">5.0</span>
+              </h1>
+              <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+            </div>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-3 sm:mb-4">
+              Event Registration
+            </h2>
+            <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+              Registration opens tomorrow. Please check back soon.
+            </p>
+          </header>
+        </section>
+      </main>
+    ) : (
     <main ref={mainRef} className="min-h-screen bg-background pt-28 sm:pt-32 lg:pt-36 pb-16 px-4 sm:px-6 mb-5">
       <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
         <div className="absolute top-1/4 -left-32 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -753,6 +782,7 @@ function EventRegister() {
         </Card>
       </section>
     </main>
+    )
   );
 }
 

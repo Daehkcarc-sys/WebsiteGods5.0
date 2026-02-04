@@ -41,6 +41,7 @@ const formSchema = z
     member2Phone: z.string().optional(),
     member2Country: z.string().optional(),
     member2Attendance: z.string().optional(),
+    member2University: z.string().optional(),
     additionalInfo: z.string().optional(),
   })
   .superRefine((values, ctx) => {
@@ -81,6 +82,9 @@ const formSchema = z
       if (!values.member2Attendance?.trim()) {
         ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["member2Attendance"], message: "Member 2 attendance is required" });
       }
+      if (!values.member2University?.trim()) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["member2University"], message: "Member 2 university is required" });
+      }
     }
   });
 
@@ -119,6 +123,7 @@ function EventRegister() {
       member2Phone: "",
       member2Country: "",
       member2Attendance: "",
+      member2University: "",
       additionalInfo: "",
     },
   });
@@ -216,6 +221,7 @@ function EventRegister() {
     formData.append("entry.1944033943", safeValue(values.member2Phone));
     formData.append("entry.925962896", safeValue(values.member2Country));
     formData.append("entry.46451145", safeValue(values.member2Attendance));
+    formData.append("entry.1553229119", safeValue(values.member2University));
     formData.append("entry.1636156417", "");
     formData.append("entry.1502424636", "");
     formData.append("entry.2007163721", "");
@@ -677,6 +683,23 @@ function EventRegister() {
                                   ))}
                                 </SelectContent>
                               </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="member2University"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-sm sm:text-base">University *</FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder="Enter university"
+                                  className="h-10 sm:h-12 rounded-xl text-sm sm:text-base"
+                                  {...field}
+                                />
+                              </FormControl>
                               <FormMessage />
                             </FormItem>
                           )}

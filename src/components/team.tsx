@@ -138,8 +138,7 @@ function Team() {
         ref={galleryContainerRef}
         className="relative w-full flex flex-col items-center justify-center px-4 opacity-0"
       >
-        <div className="relative w-full max-w-5xl h-[420px] sm:h-[460px] lg:h-[520px] rounded-3xl border border-primary/30 bg-card/40 backdrop-blur-xl shadow-[0_0_60px_rgba(59,130,246,0.15)] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-white/5" />
+        <div className="relative w-full max-w-5xl h-[420px] sm:h-[460px] lg:h-[520px] overflow-hidden">
           <div className="relative h-full">
             <CircularGallery
               items={teamItems}
@@ -152,7 +151,6 @@ function Team() {
               className="text-white"
             />
           </div>
-          <div className="absolute inset-0 pointer-events-none ring-1 ring-primary/20 rounded-3xl" />
         </div>
 
         {/* Team name/caption */}

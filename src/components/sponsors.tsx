@@ -3,55 +3,47 @@ import { gsap } from "gsap";
 import { useRef } from "react";
 import { Marquee } from "./ui/marquee";
 import { cn } from "@/lib/utils";
+import alBuhairaLogo from "@/assets/sponsors/Al-Buhaira-Invest.png";
+import ieeeCisLogo from "@/assets/sponsors/ieee cis tunisia chapter logo (1).png";
+import pwcLogo from "@/assets/sponsors/PwC transparent.png";
+import pristineLogo from "@/assets/sponsors/Pristine.png";
+import uikLogo from "@/assets/sponsors/Uik Transparent.jpeg";
 
 // Sponsor data - replace with actual sponsor logos and info
-const sponsors = {
-  platinum: [
-    { name: "Google", logo: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" },
-    { name: "Microsoft", logo: "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" },
-  ],
-  gold: [
-    { name: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1024px-Amazon_Web_Services_Logo.svg.png" },
-    { name: "Meta", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Meta_Platforms_Inc._logo.svg/1280px-Meta_Platforms_Inc._logo.svg.png" },
-    { name: "IBM", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1024px-IBM_logo.svg.png" },
-  ],
-  silver: [
-    { name: "Spotify", logo: "https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png" },
-    { name: "Slack", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Slack_icon_2019.svg/2048px-Slack_icon_2019.svg.png" },
-    { name: "GitHub", logo: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" },
-    { name: "Notion", logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" },
-  ],
-};
+const sponsors = [
+  { name: "PwC", logo: pwcLogo, url: "https://tunisie.pwc.fr/fr/" },
+  { name: "Al Buhaira", logo: alBuhairaLogo, url: "https://www.albuhairainvest.com" },
+  { name: "IEEE CIS Tunisia Chapter", logo: ieeeCisLogo, url: "https://cis.ieee.tn" },
+  { name: "Pristine", logo: pristineLogo, url: "https://www.facebook.com/Pristine.Tunisie/?locale=fr_FR" },
+  { name: "UIK", logo: uikLogo, url: "https://uik.ens.tn" },
+];
 
 // Sponsor card component
 function SponsorCard({
   logo,
   name,
-  tier,
+  url,
 }: {
   logo: string;
   name: string;
-  tier: "platinum" | "gold" | "silver";
+  url: string;
 }) {
-  const sizeClasses = {
-    platinum: "w-48 h-28 sm:w-56 sm:h-32 lg:w-64 lg:h-36",
-    gold: "w-36 h-20 sm:w-44 sm:h-24 lg:w-52 lg:h-28",
-    silver: "w-28 h-16 sm:w-36 sm:h-20 lg:w-44 lg:h-24",
-  };
-
   return (
-    <div
+    <a
+      href={url}
+      target="_blank"
+      rel="noreferrer"
       className={cn(
-        "relative flex items-center justify-center rounded-xl bg-card/80 backdrop-blur-sm border border-border/50 p-4 mx-4 transition-all duration-300 hover:scale-105 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10",
-        sizeClasses[tier]
+        "relative flex items-center justify-center rounded-xl bg-card/80 backdrop-blur-sm border border-border/50 p-4 mx-4 transition-all duration-300 hover:scale-105 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 w-40 h-24 sm:w-52 sm:h-28 lg:w-60 lg:h-32"
       )}
+      aria-label={`Visit ${name} website`}
     >
       <img
         src={logo}
         alt={name}
         className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
       />
-    </div>
+    </a>
   );
 }
 
@@ -59,10 +51,7 @@ function Sponsors() {
   const mainRef = useRef<HTMLDivElement>(null);
   const godsTextRef = useRef<HTMLSpanElement>(null);
   const sponsorsTextRef = useRef<HTMLSpanElement>(null);
-  const platinumRef = useRef<HTMLDivElement>(null);
-  const goldRef = useRef<HTMLDivElement>(null);
-  const silverRef = useRef<HTMLDivElement>(null);
-
+  const partnersRef = useRef<HTMLDivElement>(null);
   // Entrance animations
   useGSAP(() => {
     // GODS text appears
@@ -108,9 +97,9 @@ function Sponsors() {
       }
     );
 
-    // Platinum tier appears
+    // Partners carousel appears
     gsap.fromTo(
-      platinumRef.current,
+      partnersRef.current,
       { y: 40, opacity: 0 },
       {
         y: 0,
@@ -123,42 +112,6 @@ function Sponsors() {
           toggleActions: "play none none reverse",
         },
         delay: 0.3,
-      }
-    );
-
-    // Gold tier appears
-    gsap.fromTo(
-      goldRef.current,
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: mainRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-        delay: 0.5,
-      }
-    );
-
-    // Silver tier appears
-    gsap.fromTo(
-      silverRef.current,
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: mainRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-        delay: 0.7,
       }
     );
   }, { scope: mainRef });
@@ -191,64 +144,22 @@ function Sponsors() {
         </span>
       </div>
 
-      {/* Platinum Sponsors */}
-      <div ref={platinumRef} className="mb-4 opacity-0">
+      {/* Partners */}
+      <div ref={partnersRef} className="mb-4 opacity-0">
         <div className="flex items-center justify-center gap-3 mb-4">
-          <div className="h-px w-16 bg-gradient-to-r from-transparent to-primary/50" />
-          <h3 className="text-lg sm:text-xl font-semibold text-primary uppercase tracking-widest">
-            ✨ Platinum Partners
+          <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/50" />
+          <h3 className="text-base sm:text-lg font-semibold text-primary uppercase tracking-widest">
+            Partners
           </h3>
-          <div className="h-px w-16 bg-gradient-to-l from-transparent to-primary/50" />
+          <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/50" />
         </div>
-        <Marquee pauseOnHover duration={30}>
-          {sponsors.platinum.map((sponsor, idx) => (
+        <Marquee pauseOnHover reverse duration={30}>
+          {sponsors.map((sponsor, idx) => (
             <SponsorCard
               key={idx}
               logo={sponsor.logo}
               name={sponsor.name}
-              tier="platinum"
-            />
-          ))}
-        </Marquee>
-      </div>
-
-      {/* Gold Sponsors */}
-      <div ref={goldRef} className="mb-4 opacity-0">
-        <div className="flex items-center justify-center gap-3 mb-4">
-          <div className="h-px w-12 bg-gradient-to-r from-transparent to-accent/50" />
-          <h3 className="text-base sm:text-lg font-semibold text-accent uppercase tracking-widest">
-            🥇 Gold Partners
-          </h3>
-          <div className="h-px w-12 bg-gradient-to-l from-transparent to-accent/50" />
-        </div>
-        <Marquee pauseOnHover reverse duration={35}>
-          {sponsors.gold.map((sponsor, idx) => (
-            <SponsorCard
-              key={idx}
-              logo={sponsor.logo}
-              name={sponsor.name}
-              tier="gold"
-            />
-          ))}
-        </Marquee>
-      </div>
-
-      {/* Silver Sponsors */}
-      <div ref={silverRef} className="mb-4 opacity-0">
-        <div className="flex items-center justify-center gap-3 mb-4">
-          <div className="h-px w-10 bg-gradient-to-r from-transparent to-muted-foreground/50" />
-          <h3 className="text-sm sm:text-base font-semibold text-muted-foreground uppercase tracking-widest">
-            🥈 Silver Partners
-          </h3>
-          <div className="h-px w-10 bg-gradient-to-l from-transparent to-muted-foreground/50" />
-        </div>
-        <Marquee pauseOnHover duration={25}>
-          {sponsors.silver.map((sponsor, idx) => (
-            <SponsorCard
-              key={idx}
-              logo={sponsor.logo}
-              name={sponsor.name}
-              tier="silver"
+              url={sponsor.url}
             />
           ))}
         </Marquee>
@@ -260,7 +171,7 @@ function Sponsors() {
           Interested in sponsoring GODS 5.0?
         </p>
         <a
-          href="mailto:sponsor@gods.tn"
+          href="mailto:ieee.comm@ensi-uma.tn"
           className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition-colors duration-300 shadow-lg hover:shadow-primary/25 text-sm"
         >
           <span>Become a Sponsor</span>

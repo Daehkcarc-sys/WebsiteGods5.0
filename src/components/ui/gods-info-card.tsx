@@ -56,7 +56,7 @@ export const godsInfoData: GodsInfoCardProps[] = [
   {
     title: "What is GODS?",
     description:
-      "GO Data Science (GODS) is Algeria's premier data science hackathon. A 24-hour intensive event where participants solve real-world challenges using AI and machine learning.",
+      "GO Data Science (GODS) is IEEE ENSI SB's premier data science hackathon. A 24-hour intensive event where participants solve real-world challenges using AI and machine learning.",
     icon: Brain,
     stat: "5.0",
     statLabel: "Fifth Edition",
@@ -80,10 +80,10 @@ export const godsInfoData: GodsInfoCardProps[] = [
   {
     title: "Prizes",
     description:
-      "Amazing prizes await the top performers. Cash rewards, tech gadgets, internship opportunities, and more for the winning teams.",
+      "Amazing prizes await the top performers. Cash rewards,  internship opportunities, and more for the winning teams.",
     icon: Gift,
-    stat: "500K+",
-    statLabel: "DZD in Prizes",
+    stat: "3000+",
+    statLabel: "TND in Prizes",
   },
   {
     title: "Networking",
@@ -96,9 +96,9 @@ export const godsInfoData: GodsInfoCardProps[] = [
   {
     title: "Location",
     description:
-      "Hosted at a premier venue with all amenities. Food, drinks, and comfortable workspaces provided throughout the event.",
+      "Hosted at a premier venue(UIK SOUKRA) with all amenities. Food, drinks, and comfortable workspaces provided throughout the event.",
     icon: MapPin,
-    stat: "Feb 15-16",
+    stat: "Feb 14-15",
     statLabel: "Save the Date",
   },
 ];

@@ -32,47 +32,47 @@ import {
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 // Icon configuration for the explosion effect - more icons for bigger burst
-const explosionIcons: { Icon: LucideIcon; color: "blue" | "yellow" }[] = [
+const explosionIcons: { Icon: LucideIcon; color: "blue" | "white" }[] = [
   // First wave
-  { Icon: Brain, color: "yellow" },
+  { Icon: Brain, color: "white" },
   { Icon: Database, color: "blue" },
-  { Icon: LineChart, color: "yellow" },
+  { Icon: LineChart, color: "white" },
   { Icon: Network, color: "blue" },
-  { Icon: Cpu, color: "yellow" },
+  { Icon: Cpu, color: "white" },
   { Icon: Binary, color: "blue" },
-  { Icon: BarChart3, color: "yellow" },
+  { Icon: BarChart3, color: "white" },
   { Icon: Sigma, color: "blue" },
-  { Icon: Braces, color: "yellow" },
+  { Icon: Braces, color: "white" },
   { Icon: GitBranch, color: "blue" },
-  { Icon: Layers, color: "yellow" },
+  { Icon: Layers, color: "white" },
   { Icon: Sparkles, color: "blue" },
-  { Icon: Zap, color: "yellow" },
+  { Icon: Zap, color: "white" },
   { Icon: Star, color: "blue" },
-  { Icon: Code, color: "yellow" },
+  { Icon: Code, color: "white" },
   { Icon: Hash, color: "blue" },
-  { Icon: Terminal, color: "yellow" },
+  { Icon: Terminal, color: "white" },
   { Icon: Activity, color: "blue" },
-  { Icon: TrendingUp, color: "yellow" },
+  { Icon: TrendingUp, color: "white" },
   { Icon: PieChart, color: "blue" },
   // Second wave - more variety
   { Icon: Brain, color: "blue" },
-  { Icon: Database, color: "yellow" },
+  { Icon: Database, color: "white" },
   { Icon: Cpu, color: "blue" },
-  { Icon: Network, color: "yellow" },
+  { Icon: Network, color: "white" },
   { Icon: LineChart, color: "blue" },
-  { Icon: Binary, color: "yellow" },
-  { Icon: Sigma, color: "yellow" },
+  { Icon: Binary, color: "white" },
+  { Icon: Sigma, color: "white" },
   { Icon: Braces, color: "blue" },
-  { Icon: Sparkles, color: "yellow" },
-  { Icon: Star, color: "yellow" },
+  { Icon: Sparkles, color: "white" },
+  { Icon: Star, color: "white" },
   { Icon: Zap, color: "blue" },
   { Icon: Code, color: "blue" },
-  { Icon: Hash, color: "yellow" },
+  { Icon: Hash, color: "white" },
   { Icon: Terminal, color: "blue" },
-  { Icon: Activity, color: "yellow" },
+  { Icon: Activity, color: "white" },
   { Icon: TrendingUp, color: "blue" },
-  { Icon: PieChart, color: "yellow" },
-  { Icon: GitBranch, color: "yellow" },
+  { Icon: PieChart, color: "white" },
+  { Icon: GitBranch, color: "white" },
   { Icon: Layers, color: "blue" },
   { Icon: BarChart3, color: "blue" },
 ];
@@ -294,8 +294,8 @@ function HeroSection() {
     const spaceGap = isSmallScreen ? 8 : (viewportWidth < 1280 ? 12 : 20);
     const totalWidth = gW + oW + dW + sW + spaceGap + vW;
 
-    // Subtle yellow glow effect for assembled text (reduced intensity)
-    const yellowGlow = "0 0 10px rgba(251, 191, 36, 0.6), 0 0 20px rgba(251, 191, 36, 0.4)";
+    // Subtle glow for assembled text
+    const yellowGlow = "0 0 10px rgba(255, 255, 255, 0.25), 0 0 20px rgba(255, 255, 255, 0.15)";
 
     // Calculate positions relative to each letter's starting position
     // We need to move each letter to form "GODS 5.0" in the center of the viewport
@@ -317,7 +317,7 @@ function HeroSection() {
       // The word should be centered, so start position is (viewportWidth - totalWidth) / 2
       const wordStartX = (viewportWidth - totalWidth) / 2;
       const targetX = wordStartX + offsetInWord + elWidth / 2;
-      const targetY = viewportHeight / 2 + 20; // Slightly below center
+      const targetY = viewportHeight / 2 - 2; // Slightly above center
       
       // Current position (center of element)
       const currentX = rect.left + elWidth / 2;
@@ -436,14 +436,14 @@ function HeroSection() {
               <div
                 key={index}
                 className={`${
-                  color === "yellow" 
-                    ? "text-yellow-400" 
+                  color === "white" 
+                    ? "text-white" 
                     : "text-primary"
                 } absolute`}
                 style={{ 
                   opacity: 0,
-                  filter: color === "yellow" 
-                    ? "drop-shadow(0 0 8px #fbbf24) drop-shadow(0 0 16px #f59e0b)"
+                  filter: color === "white" 
+                    ? "drop-shadow(0 0 8px rgba(255,255,255,0.9)) drop-shadow(0 0 16px rgba(255,255,255,0.7))"
                     : "drop-shadow(0 0 8px #38bdf8) drop-shadow(0 0 16px #0ea5e9)",
                 }}
               >
@@ -460,39 +460,39 @@ function HeroSection() {
         >
           {/* Floating circles */}
           <div className="absolute top-[10%] left-[8%] w-3 h-3 rounded-full bg-primary/20 animate-pulse" />
-          <div className="absolute top-[15%] right-[12%] w-2 h-2 rounded-full bg-yellow-400/30 animate-pulse" style={{ animationDelay: '0.5s' }} />
+          <div className="absolute top-[15%] right-[12%] w-2 h-2 rounded-full bg-white/40 animate-pulse" style={{ animationDelay: '0.5s' }} />
           <div className="absolute top-[25%] left-[15%] w-4 h-4 rounded-full bg-primary/15 animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-[20%] right-[20%] w-2.5 h-2.5 rounded-full bg-yellow-400/25 animate-pulse" style={{ animationDelay: '0.3s' }} />
+          <div className="absolute top-[20%] right-[20%] w-2.5 h-2.5 rounded-full bg-white/35 animate-pulse" style={{ animationDelay: '0.3s' }} />
           
           {/* Floating squares/diamonds */}
           <div className="absolute top-[35%] left-[5%] w-3 h-3 bg-primary/15 rotate-45 animate-pulse" style={{ animationDelay: '0.7s' }} />
-          <div className="absolute top-[40%] right-[8%] w-2.5 h-2.5 bg-yellow-400/20 rotate-45 animate-pulse" style={{ animationDelay: '1.2s' }} />
+          <div className="absolute top-[40%] right-[8%] w-2.5 h-2.5 bg-white/30 rotate-45 animate-pulse" style={{ animationDelay: '1.2s' }} />
           
           {/* Bottom area decorations */}
           <div className="absolute bottom-[20%] left-[10%] w-2 h-2 rounded-full bg-primary/25 animate-pulse" style={{ animationDelay: '0.8s' }} />
-          <div className="absolute bottom-[15%] right-[15%] w-3 h-3 rounded-full bg-yellow-400/20 animate-pulse" style={{ animationDelay: '0.4s' }} />
+          <div className="absolute bottom-[15%] right-[15%] w-3 h-3 rounded-full bg-white/30 animate-pulse" style={{ animationDelay: '0.4s' }} />
           <div className="absolute bottom-[25%] left-[20%] w-2.5 h-2.5 bg-primary/20 rotate-45 animate-pulse" style={{ animationDelay: '1.5s' }} />
-          <div className="absolute bottom-[30%] right-[10%] w-2 h-2 rounded-full bg-yellow-400/25 animate-pulse" style={{ animationDelay: '0.9s' }} />
+          <div className="absolute bottom-[30%] right-[10%] w-2 h-2 rounded-full bg-white/35 animate-pulse" style={{ animationDelay: '0.9s' }} />
           
           {/* Middle area accents */}
           <div className="absolute top-[50%] left-[3%] w-1.5 h-1.5 rounded-full bg-primary/30 animate-pulse" style={{ animationDelay: '0.6s' }} />
-          <div className="absolute top-[55%] right-[5%] w-2 h-2 rounded-full bg-yellow-400/25 animate-pulse" style={{ animationDelay: '1.1s' }} />
+          <div className="absolute top-[55%] right-[5%] w-2 h-2 rounded-full bg-white/35 animate-pulse" style={{ animationDelay: '1.1s' }} />
           
           {/* Connecting lines (subtle) */}
           <div className="absolute top-[18%] left-[12%] w-16 h-px bg-gradient-to-r from-primary/20 to-transparent rotate-[30deg]" />
-          <div className="absolute top-[22%] right-[18%] w-12 h-px bg-gradient-to-l from-yellow-400/20 to-transparent -rotate-[20deg]" />
+          <div className="absolute top-[22%] right-[18%] w-12 h-px bg-gradient-to-l from-white/30 to-transparent -rotate-[20deg]" />
           <div className="absolute bottom-[22%] left-[8%] w-14 h-px bg-gradient-to-r from-primary/15 to-transparent rotate-[-25deg]" />
-          <div className="absolute bottom-[18%] right-[12%] w-10 h-px bg-gradient-to-l from-yellow-400/15 to-transparent rotate-[15deg]" />
+          <div className="absolute bottom-[18%] right-[12%] w-10 h-px bg-gradient-to-l from-white/25 to-transparent rotate-[15deg]" />
           
           {/* Subtle rings */}
           <div className="absolute top-[12%] left-[25%] w-8 h-8 rounded-full border border-primary/10 animate-pulse" style={{ animationDelay: '1.3s' }} />
-          <div className="absolute bottom-[28%] right-[25%] w-6 h-6 rounded-full border border-yellow-400/15 animate-pulse" style={{ animationDelay: '0.2s' }} />
+          <div className="absolute bottom-[28%] right-[25%] w-6 h-6 rounded-full border border-white/20 animate-pulse" style={{ animationDelay: '0.2s' }} />
           
           {/* Glowing dots */}
-          <div className="absolute top-[8%] left-[50%] w-1 h-1 rounded-full bg-primary shadow-[0_0_6px_2px_rgba(59,130,246,0.4)]" />
-          <div className="absolute bottom-[10%] left-[40%] w-1 h-1 rounded-full bg-yellow-400 shadow-[0_0_6px_2px_rgba(251,191,36,0.4)]" />
-          <div className="absolute top-[45%] left-[2%] w-1 h-1 rounded-full bg-primary shadow-[0_0_4px_1px_rgba(59,130,246,0.3)]" />
-          <div className="absolute top-[60%] right-[3%] w-1 h-1 rounded-full bg-yellow-400 shadow-[0_0_4px_1px_rgba(251,191,36,0.3)]" />
+          <div className="absolute top-[8%] left-[50%] w-1 h-1 rounded-full bg-primary" />
+          <div className="absolute bottom-[10%] left-[40%] w-1 h-1 rounded-full bg-white shadow-[0_0_6px_2px_rgba(255,255,255,0.6)]" />
+          <div className="absolute top-[45%] left-[2%] w-1 h-1 rounded-full bg-primary" />
+          <div className="absolute top-[60%] right-[3%] w-1 h-1 rounded-full bg-white shadow-[0_0_4px_1px_rgba(255,255,255,0.5)]" />
         </div>
         
         {/* Floating icons - Left side - hidden on small screens */}
@@ -548,8 +548,8 @@ function HeroSection() {
             </div>
 
             <p ref={heroDateRef} className="mt-2 sm:mt-3 text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-muted-foreground">
-              <span className="text-primary">15</span>-
-              <span className="text-primary">16</span> February
+              <span className="text-primary">14</span>-
+              <span className="text-primary">15</span> February
             </p>
           </div>
 
@@ -557,14 +557,15 @@ function HeroSection() {
           <div ref={fadeContentRef} className="flex flex-col items-center lg:items-start text-center lg:text-left gap-3 sm:gap-4 w-full max-w-xl">
             <div className="hero-para flex flex-col items-center lg:items-start gap-0.5 sm:gap-1">
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-foreground">
-                24 HOUR EVENT
+                48 HOUR EVENT
               </p>
               <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
-                <span className="text-accent">Competition</span>,
+                <span className="text-muted-foreground drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]">Competition</span>,
               </p>
               <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
-                <span className="text-accent">Knowledge</span> and{" "}
-                <span className="text-accent">Prizes</span>
+                <span className="text-muted-foreground drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]">Knowledge</span>{" "}
+                <span className="text-white">and</span>{" "}
+                <span className="text-muted-foreground drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]">Prizes</span>
               </p>
             </div>
 

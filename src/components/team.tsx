@@ -1,12 +1,46 @@
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { useRef } from "react";
+import { CircularGallery } from "./ui/circular-gallery-2";
+import ahmedAmineEssid from "@/assets/Team/Ahmed Amine Essid.jpg";
+import amineFathallah from "@/assets/Team/Amine Fathallah.jpg";
+import assilBenKhdija from "@/assets/Team/Assil Ben Khdija.jpg";
+import atefRegaya from "@/assets/Team/Atef Regaya.jpg";
+import aymenJedidi from "@/assets/Team/Aymen Jedidi.jpg";
+import azizaBellanes from "@/assets/Team/aziza_bellanes.jpg";
+import chaimaJlassi from "@/assets/Team/Chaima Jlassi.jpg";
+import chaymaBenAbdallah from "@/assets/Team/Chayma Ben Abdallah.jpg";
+import mariemOuesleti from "@/assets/Team/Mariem Ouesleti.jpg";
+import montahaMattoussi from "@/assets/Team/Montaha Mattoussi.jpg";
+import mouradKraiem from "@/assets/Team/Mourad Kraiem.jpg";
+import nadaBenAbdelhafidh from "@/assets/Team/Nada Ben Abdelhafidh.jpg";
+import oussemaGhanmi from "@/assets/Team/Oussema Ghanmi.jpg";
+import sarraBahlous from "@/assets/Team/Sarra Bahlous.jpg";
+import yomnToumia from "@/assets/Team/Yomn Toumia.png";
+
+const teamItems = [
+  { image: ahmedAmineEssid, text: "Ahmed Amine Essid" },
+  { image: amineFathallah, text: "Amine Fathallah" },
+  { image: assilBenKhdija, text: "Assyl Ben Khdija" },
+  { image: atefRegaya, text: "Atef Regaya" },
+  { image: aymenJedidi, text: "Aymen Jedidi" },
+  { image: azizaBellanes, text: "Aziza Bellanes" },
+  { image: chaimaJlassi, text: "Chaima Jlassi" },
+  { image: chaymaBenAbdallah, text: "Chayma Ben Abdallah" },
+  { image: mariemOuesleti, text: "Mariem Ouesleti" },
+  { image: montahaMattoussi, text: "Montaha Mattoussi" },
+  { image: mouradKraiem, text: "Mourad Kraiem" },
+  { image: nadaBenAbdelhafidh, text: "Nada Ben Abdelhafidh" },
+  { image: oussemaGhanmi, text: "Oussema Ghanmi" },
+  { image: sarraBahlous, text: "Sarra Bahlous" },
+  { image: yomnToumia, text: "Yomn Toumia" },
+];
 
 function Team() {
   const mainRef = useRef<HTMLDivElement>(null);
   const godsTextRef = useRef<HTMLSpanElement>(null);
   const teamTextRef = useRef<HTMLSpanElement>(null);
-  const imageContainerRef = useRef<HTMLDivElement>(null);
+  const galleryContainerRef = useRef<HTMLDivElement>(null);
 
   // Entrance animations
   useGSAP(() => {
@@ -53,9 +87,9 @@ function Team() {
       }
     );
 
-    // Image appears with scale effect
+    // Carousel appears with scale effect
     gsap.fromTo(
-      imageContainerRef.current,
+      galleryContainerRef.current,
       {
         y: 80,
         opacity: 0,
@@ -99,19 +133,25 @@ function Team() {
         </span>
       </div>
 
-      {/* Team Image */}
+      {/* Team Carousel */}
       <div
-        ref={imageContainerRef}
-        className="flex flex-col items-center justify-center px-4 opacity-0"
+        ref={galleryContainerRef}
+        className="relative w-full flex flex-col items-center justify-center px-4 opacity-0"
       >
-        <div className="relative w-full max-w-4xl overflow-hidden rounded-2xl shadow-2xl border-4 border-primary/20 hover:border-primary/50 transition-all duration-500 group">
-          <img
-            src="/src/assets/Team.jpg"
-            alt="GODS Team"
-            className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          {/* Overlay on hover */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="relative w-full max-w-5xl h-[420px] sm:h-[460px] lg:h-[520px] rounded-3xl border border-primary/30 bg-card/40 backdrop-blur-xl shadow-[0_0_60px_rgba(59,130,246,0.15)] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-white/5" />
+          <div className="relative h-full">
+            <CircularGallery
+              items={teamItems}
+              bend={4}
+              borderRadius={0.08}
+              scrollSpeed={2}
+              scrollEase={0.06}
+              autoScroll={true}
+              autoScrollSpeed={0.08}
+            />
+          </div>
+          <div className="absolute inset-0 pointer-events-none ring-1 ring-primary/20 rounded-3xl" />
         </div>
 
         {/* Team name/caption */}

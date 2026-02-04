@@ -75,9 +75,9 @@ export default function Navbar() {
             asChild 
             className="h-9 sm:h-11 rounded-lg sm:rounded-xl px-3 sm:px-6 text-sm sm:text-base font-semibold"
           >
-            <Link to="/register" className="flex items-center gap-1 sm:gap-2">
+            <Link to="/bootcamp-register" className="flex items-center gap-1 sm:gap-2">
               <UserPlus className="h-4 w-4" />
-              <span className="hidden sm:inline">Register</span>
+              <span className="hidden sm:inline">Bootcamp Registration</span>
             </Link>
           </Button>
 

@@ -104,6 +104,8 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+const isRegistrationOpen = false;
+
 function Register() {
   const mainRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
@@ -203,6 +205,49 @@ function Register() {
               >
                 Register Another Team
               </Button>
+            </CardContent>
+          </Card>
+        </section>
+      </main>
+    );
+  }
+
+  if (!isRegistrationOpen) {
+    return (
+      <main ref={mainRef} className="min-h-screen bg-background pt-28 sm:pt-32 lg:pt-36 pb-16 px-4 sm:px-6 mb-5">
+        {/* Background decorations */}
+        <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+          <div className="absolute top-1/4 -left-32 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 -right-32 w-64 sm:w-96 h-64 sm:h-96 bg-accent/5 rounded-full blur-3xl" />
+        </div>
+
+        <section className="max-w-2xl mx-auto relative z-10 text-center">
+          <header ref={titleRef} className="mb-8 sm:mb-12">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold">
+                <span className="text-primary">GODS</span>{" "}
+                <span className="text-foreground">5.0</span>
+              </h1>
+              <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+            </div>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-3 sm:mb-4">
+              Team Registration
+            </h2>
+          </header>
+
+          <Card ref={formRef} className="shadow-xl">
+            <CardContent className="pt-10 pb-10">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold text-sm sm:text-base mb-6">
+                <Sparkles className="w-4 h-4" />
+                Coming Soon
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
+                Registration opens soon
+              </h3>
+              <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto">
+                We’re finalizing the registration process. Check back shortly for the official opening and details.
+              </p>
             </CardContent>
           </Card>
         </section>

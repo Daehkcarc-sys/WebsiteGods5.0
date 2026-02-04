@@ -28,7 +28,7 @@ interface TimelineEvent {
 }
 
 const timelineEvents: TimelineEvent[] = [
-  // Day 1 - February 15
+  // Day 1 - February 14
   {
     time: "08:00",
     title: "Registration",
@@ -45,40 +45,40 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     time: "10:00",
-    title: "Hacking Begins",
-    description: "Start building!",
+    title: "Workshops Begin",
+    description: "Start Learning!",
     icon: Code,
     day: 1,
   },
   {
-    time: "13:00",
-    title: "Lunch Break",
+    time: "12:00",
+    title: "Coffee Break",
     description: "Fuel up for the journey",
-    icon: Utensils,
+    icon: Coffee,
     day: 1,
   },
   {
-    time: "16:00",
-    title: "Workshop #1",
-    description: "ML best practices",
+    time: "13:00",
+    title: "More Workshops",
+    description: "ML And AI Sessions",
     icon: Zap,
     day: 1,
   },
   {
     time: "19:00",
-    title: "Dinner",
+    title: "Coffee & Networking",
     description: "Networking & food",
     icon: Coffee,
     day: 1,
   },
   {
-    time: "22:00",
+    time: "00:00",
     title: "Midnight Check-in",
     description: "Progress review",
     icon: Moon,
     day: 1,
   },
-  // Day 2 - February 16
+  // Day 2 - February 15
   {
     time: "02:00",
     title: "Late Night Snacks",
@@ -245,7 +245,7 @@ function Timeline() {
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-10 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl" />
       </div>
 
       {/* Title */}
@@ -255,7 +255,7 @@ function Timeline() {
           <span className="text-foreground">Timeline</span>
         </h2>
         <p className="mt-2 sm:mt-3 text-sm sm:text-base lg:text-lg text-muted-foreground max-w-md mx-auto">
-          24 Hours of Innovation • February 15-16, 2026
+          48 Hours of Innovation • February 14-15, 2026
         </p>
       </div>
 
@@ -266,13 +266,13 @@ function Timeline() {
           <div ref={day1Ref} className="text-center">
             <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-primary/10 rounded-full border border-primary/30">
               <span className="text-sm sm:text-base lg:text-lg font-bold text-primary">Day 1</span>
-              <span className="text-xs sm:text-sm text-muted-foreground ml-1 sm:ml-2">Feb 15</span>
+              <span className="text-xs sm:text-sm text-muted-foreground ml-1 sm:ml-2">Feb 14</span>
             </span>
           </div>
           <div ref={day2Ref} className="text-center">
-            <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-accent/10 rounded-full border border-accent/30">
-              <span className="text-sm sm:text-base lg:text-lg font-bold text-accent">Day 2</span>
-              <span className="text-xs sm:text-sm text-muted-foreground ml-1 sm:ml-2">Feb 16</span>
+            <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-white/10 rounded-full border border-white/30">
+              <span className="text-sm sm:text-base lg:text-lg font-bold text-white">Day 2</span>
+              <span className="text-xs sm:text-sm text-muted-foreground ml-1 sm:ml-2">Feb 15</span>
             </span>
           </div>
         </div>
@@ -283,14 +283,14 @@ function Timeline() {
             {/* Vertical Progress Line */}
             <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-muted">
               <div
-                className="w-full h-full bg-gradient-to-b from-primary via-primary to-accent"
+                className="w-full h-full bg-gradient-to-b from-primary via-primary to-white/70"
               />
             </div>
 
             {/* Day 1 Events */}
             <div className="mb-6">
               <div className="pl-14 pb-2">
-                <span className="text-xs font-bold text-primary uppercase tracking-wider">Day 1 - Feb 15</span>
+                <span className="text-xs font-bold text-primary uppercase tracking-wider">Day 1 - Feb 14</span>
               </div>
               {day1Events.map((event, index) => (
                 <div
@@ -329,14 +329,14 @@ function Timeline() {
 
             {/* Day Divider */}
             <div className="relative py-4">
-              <div className="absolute left-4 w-5 h-5 rounded-full bg-gradient-to-r from-primary to-accent border-2 border-background shadow-lg z-10" />
+              <div className="absolute left-4 w-5 h-5 rounded-full bg-gradient-to-r from-primary to-white/70 border-2 border-background shadow-lg z-10" />
               <div className="ml-14 h-px bg-gradient-to-r from-border to-transparent" />
             </div>
 
             {/* Day 2 Events */}
             <div className="mt-6">
               <div className="pl-14 pb-2">
-                <span className="text-xs font-bold text-accent uppercase tracking-wider">Day 2 - Feb 16</span>
+                <span className="text-xs font-bold text-white uppercase tracking-wider">Day 2 - Feb 15</span>
               </div>
               {day2Events.map((event, index) => (
                 <div
@@ -344,18 +344,18 @@ function Timeline() {
                   className="timeline-event relative flex items-start mb-4"
                 >
                   {/* Dot on timeline */}
-                  <div className="timeline-dot absolute left-4 w-5 h-5 rounded-full bg-accent border-2 border-background shadow-lg shadow-accent/30 z-10" />
+                  <div className="timeline-dot absolute left-4 w-5 h-5 rounded-full bg-white border-2 border-background shadow-lg shadow-white/30 z-10" />
                   
                   {/* Card */}
-                  <div className="ml-14 group relative bg-card border border-accent/20 rounded-xl p-3 sm:p-4 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300 flex-1">
+                  <div className="ml-14 group relative bg-card border border-white/20 rounded-xl p-3 sm:p-4 hover:border-white/50 hover:shadow-lg hover:shadow-white/10 transition-all duration-300 flex-1">
                     <div className="flex items-start gap-3">
                       {/* Icon */}
-                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
-                        <event.icon className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-colors">
+                        <event.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">
                         {/* Time */}
-                        <p className="text-xs font-mono text-accent font-bold">
+                        <p className="text-xs font-mono text-white font-bold">
                           {event.time}
                         </p>
                         {/* Title */}
@@ -381,7 +381,7 @@ function Timeline() {
           <div className="absolute top-[60px] left-0 right-0 h-1 bg-muted rounded-full overflow-hidden">
             <div
               ref={progressLineRef}
-              className="h-full w-full bg-gradient-to-r from-primary via-primary to-accent"
+              className="h-full w-full bg-gradient-to-r from-primary via-primary to-white/70"
             />
           </div>
 
@@ -437,13 +437,13 @@ function Timeline() {
                   style={{ minWidth: "120px" }}
                 >
                   {/* Card */}
-                  <div className="group relative bg-card border border-accent/20 rounded-xl p-3 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300 cursor-pointer w-[120px]">
+                  <div className="group relative bg-card border border-white/20 rounded-xl p-3 hover:border-white/50 hover:shadow-lg hover:shadow-white/10 transition-all duration-300 cursor-pointer w-[120px]">
                     {/* Icon */}
-                    <div className="w-10 h-10 mx-auto rounded-lg bg-accent/10 flex items-center justify-center mb-2 group-hover:bg-accent/20 transition-colors">
-                      <event.icon className="w-5 h-5 text-accent" />
+                    <div className="w-10 h-10 mx-auto rounded-lg bg-white/10 flex items-center justify-center mb-2 group-hover:bg-white/20 transition-colors">
+                      <event.icon className="w-5 h-5 text-white" />
                     </div>
                     {/* Time */}
-                    <p className="text-xs font-mono text-accent text-center font-bold">
+                    <p className="text-xs font-mono text-white text-center font-bold">
                       {event.time}
                     </p>
                     {/* Title */}
@@ -456,9 +456,9 @@ function Timeline() {
                     </p>
                   </div>
                   {/* Connector Line */}
-                  <div className="timeline-connector w-0.5 h-4 bg-accent/50" />
+                  <div className="timeline-connector w-0.5 h-4 bg-white/50" />
                   {/* Dot on timeline */}
-                  <div className="timeline-dot w-4 h-4 rounded-full bg-accent border-2 border-background shadow-lg shadow-accent/30" />
+                  <div className="timeline-dot w-4 h-4 rounded-full bg-white border-2 border-background shadow-lg shadow-white/30" />
                 </div>
               ))}
             </div>

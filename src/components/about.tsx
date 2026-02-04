@@ -29,7 +29,7 @@ interface CardInfo {
 const godsCards: CardInfo[] = [
   {
     title: "What is GODS?",
-    description: "Algeria's premier 24-hour data science hackathon where participants solve real-world challenges using AI and ML.",
+    description: "IEEE ENSI SB's premier 24-hour data science hackathon where participants solve real-world challenges using AI and ML.",
     icon: Brain,
     stat: "5.0",
     statLabel: "Fifth Edition",
@@ -49,17 +49,17 @@ const godsCards: CardInfo[] = [
     title: "Knowledge",
     description: "Learn from industry experts through workshops and mentorship sessions.",
     icon: GraduationCap,
-    stat: "10+",
+    stat: "5+",
     statLabel: "Mentors",
     gradient: "from-green-500/20 via-transparent to-emerald-500/10",
     iconBg: "bg-gradient-to-br from-green-500 to-emerald-600",
   },
   {
     title: "Prizes",
-    description: "Amazing prizes await! Cash rewards, tech gadgets, and internship opportunities.",
+    description: "Amazing prizes await! Cash rewards,  and internship opportunities.",
     icon: Gift,
-    stat: "500K+",
-    statLabel: "DZD",
+    stat: "3000+",
+    statLabel: "TND",
     gradient: "from-pink-500/20 via-transparent to-rose-500/10",
     iconBg: "bg-gradient-to-br from-pink-500 to-rose-600",
   },
@@ -67,16 +67,16 @@ const godsCards: CardInfo[] = [
     title: "Networking",
     description: "Connect with fellow data enthusiasts and industry professionals.",
     icon: Users,
-    stat: "200+",
+    stat: "800+",
     statLabel: "Participants",
     gradient: "from-cyan-500/20 via-transparent to-blue-500/10",
     iconBg: "bg-gradient-to-br from-cyan-500 to-blue-600",
   },
   {
     title: "Location",
-    description: "Premier venue with all amenities. Food, drinks, and workspaces provided.",
+    description: "Premier venue with all amenities (UIK SOUKRA). Food, drinks, and workspaces provided.",
     icon: MapPin,
-    stat: "Feb 15-16",
+    stat: "Feb 14-15",
     statLabel: "2026",
     gradient: "from-purple-500/20 via-transparent to-indigo-500/10",
     iconBg: "bg-gradient-to-br from-purple-500 to-indigo-600",
@@ -257,7 +257,7 @@ function About() {
           </span>
         </div>
         <p className="text-sm sm:text-base text-muted-foreground text-center max-w-md opacity-70">
-          Algeria's biggest data science event
+          IEEE ENSI SB's biggest data science event
         </p>
       </div>
 
@@ -337,7 +337,7 @@ function About() {
       {/* Scroll indicator */}
       <div className="flex justify-center mt-6 sm:mt-8">
         <div className="flex items-center gap-2 text-muted-foreground text-sm">
-          <span className="hidden sm:inline">Auto-scrolling</span>
+          <span className="hidden sm:inline"></span>
           <div className="flex gap-1">
             <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             <div className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-pulse" style={{ animationDelay: '0.2s' }} />

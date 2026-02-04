@@ -476,6 +476,11 @@ class App {
   planeGeometry!: Plane;
   mediasImages!: GalleryItem[];
   medias!: Media[];
+  items?: GalleryItem[];
+  bend: number = 3;
+  textColor: string = "#fff";
+  borderRadius: number = 0.05;
+  font: string = "bold 30px sans-serif";
   isDown: boolean = false;
   start: number = 0;
   screen!: { width: number; height: number };
@@ -487,6 +492,9 @@ class App {
   boundOnTouchMove!: (e: MouseEvent | TouchEvent) => void;
   boundOnTouchUp!: () => void;
   resizeObserver?: ResizeObserver;
+  boundOnContextLost!: (e: Event) => void;
+  boundOnContextRestored!: () => void;
+  contextLost: boolean = false;
   autoScroll: boolean = false;
   autoScrollSpeed: number = 0.5;
   isHovering: boolean = false;
@@ -516,6 +524,11 @@ class App {
     },
   ) {
     this.container = container;
+    this.items = items;
+    this.bend = bend;
+    this.textColor = textColor;
+    this.borderRadius = borderRadius;
+    this.font = font;
     const isMobile = window.innerWidth < 768;
     this.scrollSpeed = isMobile ? scrollSpeed * 0.6 : scrollSpeed;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
@@ -545,6 +558,11 @@ class App {
     this.gl = this.renderer.gl;
     this.gl.clearColor(0, 0, 0, 0);
     this.container.appendChild(this.gl.canvas);
+
+    this.boundOnContextLost = this.onContextLost.bind(this);
+    this.boundOnContextRestored = this.onContextRestored.bind(this);
+    this.gl.canvas.addEventListener("webglcontextlost", this.boundOnContextLost, false);
+    this.gl.canvas.addEventListener("webglcontextrestored", this.boundOnContextRestored, false);
   }
 
   createCamera() {
@@ -555,6 +573,27 @@ class App {
 
   createScene() {
     this.scene = new Transform();
+  }
+
+  onContextLost(e: Event) {
+    e.preventDefault();
+    this.contextLost = true;
+    if (this.raf) {
+      window.cancelAnimationFrame(this.raf);
+    }
+  }
+
+  onContextRestored() {
+    this.contextLost = false;
+    if (this.renderer && this.renderer.gl) {
+      this.renderer.gl.clearColor(0, 0, 0, 0);
+    }
+    this.createCamera();
+    this.createScene();
+    this.createGeometry();
+    this.createMedias(this.items, this.bend, this.textColor, this.borderRadius, this.font);
+    this.onResize();
+    this.update();
   }
 
   createGeometry() {
@@ -663,6 +702,7 @@ class App {
   }
 
   update() {
+    if (this.contextLost) return;
     // Auto-scroll when enabled and not interacting
     if (this.autoScroll && !this.isDown && !this.isHovering) {
       this.scroll.target += this.autoScrollSpeed;
@@ -734,6 +774,8 @@ class App {
     }
 
     if (this.renderer && this.renderer.gl && this.renderer.gl.canvas.parentNode) {
+      this.renderer.gl.canvas.removeEventListener("webglcontextlost", this.boundOnContextLost);
+      this.renderer.gl.canvas.removeEventListener("webglcontextrestored", this.boundOnContextRestored);
       this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas);
     }
   }

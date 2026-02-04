@@ -120,6 +120,7 @@ function EventRegister() {
 
   const uploadCv = async (file: File, folder: string) => {
     const formData = new FormData();
+    const safeValue = (value?: string) => value ?? "";
     formData.append("file", file);
     formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
     formData.append("folder", `gods5/cv/${folder}`);
@@ -183,13 +184,13 @@ function EventRegister() {
     formData.append("entry.497263609", values.leaderUniversity);
     formData.append("entry.682763593", values.leaderCountry);
     formData.append("entry.1707833588", values.teamSize);
-    formData.append("entry.1720792431", values.member1Name ?? "");
-    formData.append("entry.1112413563", values.member1Email ?? "");
-    formData.append("entry.885338123", values.member1Attendance ?? "");
-    formData.append("entry.1784571291", values.member1University ?? "");
-    formData.append("entry.1163587628", values.member2Name ?? "");
-    formData.append("entry.1470151021", values.member2Email ?? "");
-    formData.append("entry.46451145", values.member2Attendance ?? "");
+    formData.append("entry.1720792431", safeValue(values.member1Name));
+    formData.append("entry.1112413563", safeValue(values.member1Email));
+    formData.append("entry.885338123", safeValue(values.member1Attendance));
+    formData.append("entry.1784571291", safeValue(values.member1University));
+    formData.append("entry.1163587628", safeValue(values.member2Name));
+    formData.append("entry.1470151021", safeValue(values.member2Email));
+    formData.append("entry.46451145", safeValue(values.member2Attendance));
     formData.append("entry.1636156417", "");
     formData.append("entry.1502424636", "");
     formData.append("entry.1102450313", "");

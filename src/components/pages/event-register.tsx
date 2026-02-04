@@ -32,10 +32,14 @@ const formSchema = z
     teamSize: z.string().min(1, "Select team size"),
     member1Name: z.string().optional(),
     member1Email: z.string().email("Valid email is required").optional().or(z.literal("")),
+    member1Phone: z.string().optional(),
+    member1Country: z.string().optional(),
     member1Attendance: z.string().optional(),
     member1University: z.string().optional(),
     member2Name: z.string().optional(),
     member2Email: z.string().email("Valid email is required").optional().or(z.literal("")),
+    member2Phone: z.string().optional(),
+    member2Country: z.string().optional(),
     member2Attendance: z.string().optional(),
     additionalInfo: z.string().optional(),
   })
@@ -47,6 +51,12 @@ const formSchema = z
       }
       if (!values.member1Email?.trim()) {
         ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["member1Email"], message: "Member 1 email is required" });
+      }
+      if (!values.member1Phone?.trim()) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["member1Phone"], message: "Member 1 phone is required" });
+      }
+      if (!values.member1Country?.trim()) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["member1Country"], message: "Member 1 country is required" });
       }
       if (!values.member1Attendance?.trim()) {
         ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["member1Attendance"], message: "Member 1 attendance is required" });
@@ -61,6 +71,12 @@ const formSchema = z
       }
       if (!values.member2Email?.trim()) {
         ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["member2Email"], message: "Member 2 email is required" });
+      }
+      if (!values.member2Phone?.trim()) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["member2Phone"], message: "Member 2 phone is required" });
+      }
+      if (!values.member2Country?.trim()) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["member2Country"], message: "Member 2 country is required" });
       }
       if (!values.member2Attendance?.trim()) {
         ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["member2Attendance"], message: "Member 2 attendance is required" });
@@ -94,10 +110,14 @@ function EventRegister() {
       teamSize: "3",
       member1Name: "",
       member1Email: "",
+      member1Phone: "",
+      member1Country: "",
       member1Attendance: "",
       member1University: "",
       member2Name: "",
       member2Email: "",
+      member2Phone: "",
+      member2Country: "",
       member2Attendance: "",
       additionalInfo: "",
     },
@@ -187,13 +207,19 @@ function EventRegister() {
     formData.append("entry.1707833588", safeValue(values.teamSize));
     formData.append("entry.1720792431", safeValue(values.member1Name));
     formData.append("entry.1112413563", safeValue(values.member1Email));
+    formData.append("entry.1335903836", safeValue(values.member1Phone));
+    formData.append("entry.361016620", safeValue(values.member1Country));
     formData.append("entry.885338123", safeValue(values.member1Attendance));
     formData.append("entry.1784571291", safeValue(values.member1University));
     formData.append("entry.1163587628", safeValue(values.member2Name));
     formData.append("entry.1470151021", safeValue(values.member2Email));
+    formData.append("entry.1944033943", safeValue(values.member2Phone));
+    formData.append("entry.925962896", safeValue(values.member2Country));
     formData.append("entry.46451145", safeValue(values.member2Attendance));
     formData.append("entry.1636156417", "");
     formData.append("entry.1502424636", "");
+    formData.append("entry.2007163721", "");
+    formData.append("entry.1539576931", "");
     formData.append("entry.1102450313", "");
     const additionalInfo = [values.additionalInfo?.trim(), cvLinks.join(" | ")]
       .filter((value): value is string => Boolean(value))
@@ -477,6 +503,40 @@ function EventRegister() {
                         />
                         <FormField
                           control={form.control}
+                          name="member1Phone"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-sm sm:text-base">Phone *</FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="tel"
+                                  className="h-10 sm:h-12 rounded-xl text-sm sm:text-base"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="member1Country"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-sm sm:text-base">Country *</FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder="Enter country"
+                                  className="h-10 sm:h-12 rounded-xl text-sm sm:text-base"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
                           name="member1Attendance"
                           render={({ field }) => (
                             <FormItem>
@@ -558,6 +618,40 @@ function EventRegister() {
                               <FormLabel className="text-sm sm:text-base">Email *</FormLabel>
                               <FormControl>
                                 <Input type="email" className="h-10 sm:h-12 rounded-xl text-sm sm:text-base" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="member2Phone"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-sm sm:text-base">Phone *</FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="tel"
+                                  className="h-10 sm:h-12 rounded-xl text-sm sm:text-base"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="member2Country"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-sm sm:text-base">Country *</FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder="Enter country"
+                                  className="h-10 sm:h-12 rounded-xl text-sm sm:text-base"
+                                  {...field}
+                                />
                               </FormControl>
                               <FormMessage />
                             </FormItem>

@@ -231,6 +231,12 @@ function EventRegister() {
     formData.append("entry.1539576931", safeValue(values.member2Country));
     formData.append("entry.1553229119", safeValue(values.member2University));
     formData.append("entry.1102450313", safeValue(values.member2Attendance));
+    // Fallback to earlier member-2 entry IDs in case the form retained them
+    formData.append("entry.1163587628", safeValue(values.member2Name));
+    formData.append("entry.1470151021", safeValue(values.member2Email));
+    formData.append("entry.1944033943", safeValue(values.member2Phone));
+    formData.append("entry.925962896", safeValue(values.member2Country));
+    formData.append("entry.46451145", safeValue(values.member2Attendance));
     const additionalInfo = [
       values.additionalInfo?.trim(),
       values.member1University?.trim()

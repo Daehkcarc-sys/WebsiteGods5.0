@@ -230,6 +230,7 @@ function EventRegister() {
     formData.append("entry.2007163721", "");
     formData.append("entry.1539576931", "");
     formData.append("entry.1102450313", "");
+    formData.append("pageHistory", teamSize >= 3 ? "0,1,2" : teamSize >= 2 ? "0,1" : "0");
     const additionalInfo = [values.additionalInfo?.trim(), cvLinks.join(" | ")]
       .filter((value): value is string => Boolean(value))
       .join(" | ");

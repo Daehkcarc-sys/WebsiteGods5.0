@@ -12,6 +12,7 @@ import { Sparkles, Users, GraduationCap } from "lucide-react";
 
 const FORM_ACTION_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSfZLIylwzYMUCRc48w-ce0Sy7UYTxwDpaddqNzRrj9QpUJQ8w/formResponse";
+const FORM_FBZX = "-4820783040379172204";
 
 const CLOUDINARY_CLOUD_NAME = "dxohtyx5l";
 const CLOUDINARY_UPLOAD_PRESET = "Gods5.0";
@@ -230,6 +231,8 @@ function EventRegister() {
     formData.append("entry.2007163721", "");
     formData.append("entry.1539576931", "");
     formData.append("entry.1102450313", "");
+    formData.append("fvv", "1");
+    formData.append("fbzx", FORM_FBZX);
     formData.append("pageHistory", teamSize >= 3 ? "0,1,2,3" : teamSize >= 2 ? "0,1,2" : "0,1");
     const additionalInfo = [values.additionalInfo?.trim(), cvLinks.join(" | ")]
       .filter((value): value is string => Boolean(value))

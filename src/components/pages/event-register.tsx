@@ -215,8 +215,8 @@ function EventRegister() {
     formData.append("entry.1707833588", safeValue(values.teamSize));
     formData.append("entry.1720792431", safeValue(values.member1Name));
     formData.append("entry.1112413563", safeValue(values.member1Email));
-    formData.append("entry.1335903836", safeValue(values.member1Phone));
-    formData.append("entry.361016620", safeValue(values.member1Country));
+    formData.append("entry.1335903836", safeValue(values.member1Country));
+    formData.append("entry.361016620", safeValue(values.member1Phone));
     formData.append("entry.885338123", safeValue(values.member1Attendance));
     formData.append("entry.1784571291", safeValue(values.member1University));
     formData.append("entry.1163587628", safeValue(values.member2Name));

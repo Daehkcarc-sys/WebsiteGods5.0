@@ -213,24 +213,24 @@ function EventRegister() {
     formData.append("entry.497263609", safeValue(values.leaderUniversity));
     formData.append("entry.682763593", safeValue(values.leaderCountry));
     formData.append("entry.1707833588", safeValue(values.teamSize));
-    formData.append("entry.1720792431", safeValue(values.member1Name));
-    formData.append("entry.1112413563", safeValue(values.member1Email));
-    formData.append("entry.1335903836", safeValue(values.member1Country));
-    formData.append("entry.361016620", safeValue(values.member1Phone));
-    formData.append("entry.885338123", safeValue(values.member1Attendance));
-    formData.append("entry.1784571291", safeValue(values.member1University));
-    formData.append("entry.1163587628", safeValue(values.member2Name));
-    formData.append("entry.1470151021", safeValue(values.member2Email));
-    formData.append("entry.1944033943", safeValue(values.member2Phone));
-    formData.append("entry.925962896", safeValue(values.member2Country));
-    formData.append("entry.46451145", safeValue(values.member2Attendance));
+    formData.append("entry.1163587628", safeValue(values.member1Name));
+    formData.append("entry.1470151021", safeValue(values.member1Email));
+    formData.append("entry.1944033943", safeValue(values.member1Phone));
+    formData.append("entry.925962896", safeValue(values.member1Country));
+    formData.append("entry.46451145", safeValue(values.member1Attendance));
+    formData.append("entry.1636156417", safeValue(values.member2Name));
+    formData.append("entry.1502424636", safeValue(values.member2Email));
+    formData.append("entry.2007163721", safeValue(values.member2Phone));
+    formData.append("entry.1539576931", safeValue(values.member2Country));
     formData.append("entry.1553229119", safeValue(values.member2University));
-    formData.append("entry.1636156417", "");
-    formData.append("entry.1502424636", "");
-    formData.append("entry.2007163721", "");
-    formData.append("entry.1539576931", "");
-    formData.append("entry.1102450313", "");
-    const additionalInfo = [values.additionalInfo?.trim(), cvLinks.join(" | ")]
+    formData.append("entry.1102450313", safeValue(values.member2Attendance));
+    const additionalInfo = [
+      values.additionalInfo?.trim(),
+      values.member1University?.trim()
+        ? `Member 1 University: ${values.member1University.trim()}`
+        : null,
+      cvLinks.join(" | "),
+    ]
       .filter((value): value is string => Boolean(value))
       .join(" | ");
     formData.append("entry.195544129", additionalInfo);

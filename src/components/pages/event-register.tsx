@@ -1,16 +1,25 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Sparkles } from "lucide-react";
 
-const FORM_ACTION_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSfZLIylwzYMUCRc48w-ce0Sy7UYTxwDpaddqNzRrj9QpUJQ8w/formResponse";
 const PUBLIC_FORM_URL = "https://forms.gle/D1MLp96WdKrnPi2z5";
 
 const REGISTRATION_UNLOCK_AT = new Date("2026-02-05T20:00:00+01:00");
 
 function EventRegister() {
   const mainRef = useRef<HTMLDivElement>(null);
-  const isLocked = Date.now() < REGISTRATION_UNLOCK_AT.getTime();
+  const [isLocked, setIsLocked] = useState(true);
+
+  useEffect(() => {
+    const unlockTime = REGISTRATION_UNLOCK_AT.getTime();
+    const updateLock = () => setIsLocked(Date.now() < unlockTime);
+
+    updateLock();
+    const delay = Math.max(0, unlockTime - Date.now());
+    const timer = window.setTimeout(() => setIsLocked(false), delay);
+
+    return () => window.clearTimeout(timer);
+  }, []);
 
   return (
     isLocked ? (

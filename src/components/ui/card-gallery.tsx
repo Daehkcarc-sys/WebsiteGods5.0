@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
-import { Draggable } from "gsap/Draggable";
+import { Draggable } from "gsap/all";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { LucideIcon } from "lucide-react";
 
@@ -12,7 +12,7 @@ export interface CardInfo {
   title: string;
   description: string;
   icon: LucideIcon;
-  stat: string;
+  stat: string; 
   statLabel: string;
 }
 

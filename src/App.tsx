@@ -5,9 +5,7 @@ import EventRegister from './components/pages/event-register.tsx';
 import BootcampRegister from './components/pages/bootcamp-register.tsx';
 import { BrowserRouter, Routes, Route } from "react-router";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
-import { Draggable } from "gsap/Draggable";
+import { ScrollTrigger, SplitText, Draggable } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger, SplitText, Draggable);
 
 function App() {

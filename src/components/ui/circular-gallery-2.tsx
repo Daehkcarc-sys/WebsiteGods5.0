@@ -80,9 +80,12 @@ function lerp(p1: number, p2: number, t: number) {
 
 function autoBind(instance: object) {
   const proto = Object.getPrototypeOf(instance);
+  const instanceRecord = instance as Record<string, unknown>;
   Object.getOwnPropertyNames(proto).forEach((key) => {
-    if (key !== "constructor" && typeof (instance as any)[key] === "function") {
-      (instance as any)[key] = (instance as any)[key].bind(instance);
+    if (key === "constructor") return;
+    const value = instanceRecord[key];
+    if (typeof value === "function") {
+      instanceRecord[key] = (value as (...args: unknown[]) => unknown).bind(instance);
     }
   });
 }
@@ -441,10 +444,9 @@ class Media {
     if (screen) this.screen = screen;
     if (viewport) {
       this.viewport = viewport;
-      if ((this.plane.program.uniforms as any).uViewportSizes) {
-        (
-          this.plane.program.uniforms as any
-        ).uViewportSizes.value = [this.viewport.width, this.viewport.height];
+      const uniforms = this.plane.program.uniforms as Record<string, { value: number[] }>;
+      if (uniforms.uViewportSizes) {
+        uniforms.uViewportSizes.value = [this.viewport.width, this.viewport.height];
       }
     }
     const scaleBase = Math.min(this.screen.width / 1200, this.screen.height / 1500);

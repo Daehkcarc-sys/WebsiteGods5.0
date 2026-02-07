@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Sparkles } from "lucide-react";
 
-const PUBLIC_FORM_URL = "https://forms.gle/D1MLp96WdKrnPi2z5";
+const PUBLIC_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeg9KzQ5FloA0ifavekLcMyHAvFQioGW81M_rRJEsXJhzVySg/viewform";
 
 const REGISTRATION_UNLOCK_AT = new Date("2026-02-05T20:00:00+01:00");
 

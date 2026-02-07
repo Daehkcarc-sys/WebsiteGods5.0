@@ -323,29 +323,25 @@ function EventRegister() {
 
         <Card className="shadow-xl">
           <CardHeader className="pb-4 sm:pb-6">
-            <Card className="shadow-xl">
-              <CardHeader className="pb-4 sm:pb-6">
-                <CardTitle className="text-xl sm:text-2xl">Registration Form</CardTitle>
-                <CardDescription className="text-sm sm:text-base">
-                  Use the official Google Form to complete your registration.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-col items-center gap-4 py-6">
-                  <p className="text-sm sm:text-base text-muted-foreground text-center">
-                    Click below to open the registration form.
-                  </p>
-                  <a
-                    href={PUBLIC_FORM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-xl px-6 py-2.5 bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors duration-300"
-                  >
-                    Open Registration Form
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
+            <CardTitle className="text-xl sm:text-2xl">Registration Form</CardTitle>
+            <CardDescription className="text-sm sm:text-base">
+              Use the official Google Form to complete your registration.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-col items-center gap-4 py-6">
+              <p className="text-sm sm:text-base text-muted-foreground text-center">
+                Click below to open the registration form.
+              </p>
+              <a
+                href={PUBLIC_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-xl px-6 py-2.5 bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors duration-300"
+              >
+                Open Registration Form
+              </a>
+            </div>
           </CardContent>
         </Card>
       </section>

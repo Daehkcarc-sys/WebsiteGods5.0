@@ -3,6 +3,7 @@ import Homepage from './components/pages/homepage.tsx';
 import Layout from './components/pages/layout.tsx'
 import EventRegister from './components/pages/event-register.tsx';
 import BootcampRegister from './components/pages/bootcamp-register.tsx';
+import WorkshopRecords from './components/pages/workshop-records.tsx';
 import { BrowserRouter, Routes, Route } from "react-router";
 import gsap from "gsap";
 import { ScrollTrigger, SplitText, Draggable } from "gsap/all";
@@ -19,6 +20,7 @@ function App() {
             <Route path="register" element={<EventRegister />} />
             <Route path="hackathon-register" element={<EventRegister />} />
             <Route path="bootcamp-register" element={<BootcampRegister />} />
+            <Route path="workshop-records" element={<WorkshopRecords />} />
           </Route>
         </Routes>
       </BrowserRouter>

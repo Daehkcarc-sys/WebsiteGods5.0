@@ -5,6 +5,7 @@ import { Marquee } from "./ui/marquee";
 import { cn } from "@/lib/utils";
 import alBuhairaLogo from "@/assets/sponsors/Al-Buhaira-Invest.png";
 import ieeeCisLogo from "@/assets/sponsors/ieee cis tunisia chapter logo (1).png";
+import phenexaLogo from "@/assets/sponsors/Phenexa Group.jpg";
 import pwcLogo from "@/assets/sponsors/PwC_logo_rgb_colour_rev.png";
 import pristineLogo from "@/assets/sponsors/Pristine.png";
 import uikLogo from "@/assets/sponsors/Uik Transparent.jpeg";
@@ -14,6 +15,7 @@ const sponsors = [
   { name: "PwC", logo: pwcLogo, url: "https://tunisie.pwc.fr/fr/" },
   { name: "Al Buhaira", logo: alBuhairaLogo, url: "https://www.albuhairainvest.com" },
   { name: "IEEE CIS Tunisia Chapter", logo: ieeeCisLogo, url: "https://cis.ieee.tn" },
+  { name: "Phenexa Group", logo: phenexaLogo, url: "https://phenexa.com" },
   { name: "Pristine", logo: pristineLogo, url: "https://www.facebook.com/Pristine.Tunisie/?locale=fr_FR" },
   { name: "UIK", logo: uikLogo, url: "https://uik.ens.tn" },
 ];
